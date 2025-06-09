@@ -17,7 +17,7 @@ export default function CountdownTimer() {
     // Mark as client-side
     setIsClient(true);
     
-    const targetDate = new Date('2025-06-08T23:59:59.000Z');
+    const targetDate = new Date('2025-06-15T23:59:59.000Z');
 
     const calculateTimeLeft = (): TimeLeft => {
       const currentTime = new Date().getTime();

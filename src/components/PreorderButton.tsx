@@ -23,17 +23,17 @@ export default function PreorderButton() {
         <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 rounded-xl">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs sm:text-sm font-medium text-red-400">LIMITED PRE-ORDERS</span>
-            <span className="text-xs sm:text-sm font-bold text-white">195/200 CLAIMED</span>
+            <span className="text-xs sm:text-sm font-bold text-white">187/200 CLAIMED</span>
           </div>
           
           {/* Progress Bar */}
           <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
             <div className="bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full transition-all duration-300" 
-                 style={{ width: '97.5%' }}></div>
+                 style={{ width: '93.5%' }}></div>
           </div>
           
           <div className="flex items-center justify-center">
-            <span className="text-xs text-red-300 font-medium animate-pulse">⚡ Only 5 spots remaining!</span>
+            <span className="text-xs text-red-300 font-medium animate-pulse">⚡ Only 13 spots remaining!</span>
           </div>
         </div>
 
