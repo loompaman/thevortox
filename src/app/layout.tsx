@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   title: "VORTOX - AI Design Gallery & Prompts",
   description: "Discover stunning designs and the exact AI prompts used to create them. Get inspired by our curated collection of cutting-edge AI-powered creativity.",
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' },
+      { url: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }
+    ],
   },
 };
 
