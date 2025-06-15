@@ -59,19 +59,19 @@ const sampleDesigns: DesignItem[] = [
   },
   {
     id: 6,
-    title: "Wellness Brand",
+    title: "Luxury Perfume",
     image: "/designs/6.png",
-    prompt: "Design a holistic wellness brand with natural color palettes, organic shapes, and calming typography. Perfect for supplements and health products.",
-    category: "Wellness",
+    prompt: "Design an elegant perfume brand with sophisticated bottle design, premium packaging, and luxurious visual identity. Focus on exclusivity and sensory appeal.",
+    category: "Perfume",
     colors: ["#f0fdf4", "#16a34a", "#15803d"],
     accentColor: "green"
   },
   {
     id: 7,
-    title: "Food & Beverage",
+    title: "Sneaker Brand",
     image: "/designs/7.png",
-    prompt: "Create appetizing food and beverage branding with vibrant colors, appetizing photography, and clear product hierarchy. Restaurant or CPG focused.",
-    category: "Food & Bev",
+    prompt: "Create a dynamic sneaker brand identity with bold graphics, street culture aesthetics, and performance-focused design. Include shoe design and lifestyle branding.",
+    category: "Sneakers",
     colors: ["#fff7ed", "#ea580c", "#dc2626"],
     accentColor: "cyan"
   }
@@ -97,7 +97,7 @@ export default function Hero() {
   const duplicatedDesigns = [...sampleDesigns, ...sampleDesigns, ...sampleDesigns]
 
   return (
-    <section className="w-full px-6 py-32 bg-gradient-to-br from-white via-gray-50 to-gray-100 relative overflow-hidden">
+    <section className="w-full px-3 sm:px-6 py-12 sm:py-24 lg:py-32 bg-gradient-to-br from-white via-gray-50 to-gray-100 relative overflow-hidden">
       {/* CSS Animation Styles */}
       <style jsx>{`
         @keyframes scroll {
@@ -105,15 +105,24 @@ export default function Hero() {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-7 * (320px + 2rem)));
+            transform: translateX(calc(-7 * (280px + 1rem)));
+          }
+        }
+        @keyframes scrollMobile {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-7 * (200px + 0.75rem)));
           }
         }
         .animate-scroll {
           animation: scroll 28s linear infinite;
           will-change: transform;
         }
-        .animate-scroll:hover {
-          animation-play-state: paused;
+        .animate-scroll-mobile {
+          animation: scrollMobile 28s linear infinite;
+          will-change: transform;
         }
         
         /* Ensure smooth performance */
@@ -121,57 +130,63 @@ export default function Hero() {
           backface-visibility: hidden;
           perspective: 1000px;
         }
+        
+        @media (max-width: 640px) {
+          .animate-scroll {
+            animation: scrollMobile 28s linear infinite;
+          }
+        }
       `}</style>
 
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,0,0,0.05),rgba(255,255,255,0))]"></div>
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gray-900/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gray-800/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/4 right-1/4 w-32 sm:w-96 h-32 sm:h-96 bg-gray-900/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-32 sm:w-96 h-32 sm:h-96 bg-gray-800/5 rounded-full blur-3xl"></div>
       
-      {/* Floating 3D Elements */}
-      <div className="absolute top-20 left-20 w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl transform rotate-12 shadow-lg animate-bounce" style={{animationDelay: '0s', animationDuration: '3s'}}></div>
-      <div className="absolute top-32 right-32 w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1s', animationDuration: '4s'}}></div>
-      <div className="absolute top-1/3 left-1/4 w-8 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 transform rotate-45 shadow-lg animate-bounce" style={{animationDelay: '2s', animationDuration: '3.5s'}}></div>
-      <div className="absolute bottom-1/3 right-1/3 w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-xl transform -rotate-12 shadow-lg animate-bounce" style={{animationDelay: '0.5s', animationDuration: '4.5s'}}></div>
-      <div className="absolute top-1/2 right-20 w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1.5s', animationDuration: '3s'}}></div>
-      <div className="absolute bottom-20 left-1/3 w-12 h-8 bg-gradient-to-br from-pink-400 to-pink-600 rounded-lg transform rotate-30 shadow-lg animate-bounce" style={{animationDelay: '2.5s', animationDuration: '4s'}}></div>
-      <div className="absolute top-40 left-1/2 w-6 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 transform -rotate-30 shadow-lg animate-bounce" style={{animationDelay: '3s', animationDuration: '3.5s'}}></div>
-      <div className="absolute bottom-40 right-1/4 w-16 h-6 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1.2s', animationDuration: '4.2s'}}></div>
+      {/* Floating 3D Elements - Smaller on mobile */}
+      <div className="absolute top-8 sm:top-20 left-3 sm:left-20 w-6 sm:w-16 h-6 sm:h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg sm:rounded-2xl transform rotate-12 shadow-lg animate-bounce" style={{animationDelay: '0s', animationDuration: '3s'}}></div>
+      <div className="absolute top-12 sm:top-32 right-3 sm:right-32 w-4 sm:w-12 h-4 sm:h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1s', animationDuration: '4s'}}></div>
+      <div className="absolute top-1/3 left-1/4 w-3 sm:w-8 h-6 sm:h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 transform rotate-45 shadow-lg animate-bounce" style={{animationDelay: '2s', animationDuration: '3.5s'}}></div>
+      <div className="absolute bottom-1/3 right-1/3 w-6 sm:w-14 h-6 sm:h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-lg sm:rounded-xl transform -rotate-12 shadow-lg animate-bounce" style={{animationDelay: '0.5s', animationDuration: '4.5s'}}></div>
+      <div className="absolute top-1/2 right-3 sm:right-20 w-4 sm:w-10 h-4 sm:h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1.5s', animationDuration: '3s'}}></div>
+      <div className="absolute bottom-8 sm:bottom-20 left-1/3 w-6 sm:w-12 h-3 sm:h-8 bg-gradient-to-br from-pink-400 to-pink-600 rounded-lg transform rotate-30 shadow-lg animate-bounce" style={{animationDelay: '2.5s', animationDuration: '4s'}}></div>
+      <div className="absolute top-16 sm:top-40 left-1/2 w-2 sm:w-6 h-4 sm:h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 transform -rotate-30 shadow-lg animate-bounce" style={{animationDelay: '3s', animationDuration: '3.5s'}}></div>
+      <div className="absolute bottom-16 sm:bottom-40 right-1/4 w-6 sm:w-16 h-2 sm:h-6 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1.2s', animationDuration: '4.2s'}}></div>
       
       <div className="max-w-6xl mx-auto text-center relative z-10">
-        <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-4 leading-none tracking-tighter">
+        <div className="mb-4 sm:mb-8">
+          <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black text-gray-900 mb-1 sm:mb-4 leading-none tracking-tighter">
             DESIGN
           </h1>
-          <h1 className="text-6xl md:text-8xl font-black mb-4 leading-none tracking-tighter">
+          <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black mb-1 sm:mb-4 leading-none tracking-tighter">
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               GALLERY
             </span>
           </h1>
-          <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-8 leading-none tracking-tighter">
+          <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black text-gray-900 mb-3 sm:mb-8 leading-none tracking-tighter">
             & PROMPTS
           </h1>
         </div>
         
-        <p className="text-xl md:text-2xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
+        <p className="text-sm sm:text-xl lg:text-2xl text-gray-600 mb-6 sm:mb-16 max-w-3xl mx-auto leading-relaxed font-medium px-2">
           Discover <span className="text-blue-600 font-bold">stunning designs</span> and the exact 
           <span className="text-purple-600 font-bold"> AI prompts</span> used to create them. 
           Get inspired by our <span className="text-pink-600 font-bold">curated collection</span>.
         </p>
         
-        <div className="flex justify-center mb-20">
-          <a 
-            href="https://buy.stripe.com/5kQdR944PahodVLeld8IU0l"
+        <div className="flex justify-center mb-8 sm:mb-20">
+          <a
+            href="https://buy.stripe.com/8x214n30L2OW9Fveld8IU0m"
             target="_blank"
             rel="noopener noreferrer"
-            className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 flex items-center space-x-3 font-bold text-xl tracking-wide shadow-xl hover:shadow-2xl transform hover:scale-105"
+            className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-12 py-3 sm:py-6 rounded-xl sm:rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 font-bold text-sm sm:text-xl tracking-wide shadow-xl hover:shadow-2xl transform hover:scale-105"
           >
-            <span>GET PROMPTS</span>
+            <span>PREORDER PROMPTS</span>
             <svg
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              className="w-6 h-6 group-hover:translate-x-1 transition-transform"
+              className="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform"
             >
               <path
                 strokeLinecap="round"
@@ -185,11 +200,11 @@ export default function Hero() {
 
         {/* Moving Design Carousel */}
         <div className="w-full overflow-hidden carousel-container">
-          <div className="flex gap-8 pb-8 animate-scroll">
+          <div className="flex gap-3 sm:gap-8 pb-6 sm:pb-8 animate-scroll sm:animate-scroll">
             {duplicatedDesigns.map((design, index) => (
               <div
                 key={`${design.id}-${index}`}
-                className="group flex-shrink-0 w-80 bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+                className="group flex-shrink-0 w-50 sm:w-80 bg-white rounded-xl sm:rounded-3xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-2xl"
               >
                 <div className="aspect-[3/4] bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
                   <img 
@@ -204,26 +219,26 @@ export default function Hero() {
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-100/50 to-gray-200/50 flex items-center justify-center hidden">
-                    <span className="text-gray-500 text-lg font-bold tracking-wide">DESIGN PREVIEW</span>
+                    <span className="text-gray-500 text-xs sm:text-lg font-bold tracking-wide">DESIGN PREVIEW</span>
                   </div>
                   <div className="absolute inset-0 bg-white/10 group-hover:bg-white/5 transition-all duration-300"></div>
                 </div>
-                <div className="p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className={`text-xs px-3 py-1 rounded-full font-bold tracking-wide border ${getColorClasses(design.accentColor)}`}>
+                <div className="p-2 sm:p-4">
+                  <div className="flex items-center justify-between mb-1 sm:mb-2">
+                    <span className={`text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-bold tracking-wide border ${getColorClasses(design.accentColor)}`}>
                       {design.category.toUpperCase()}
                     </span>
                     <div className="flex space-x-1">
                       {design.colors.slice(0, 3).map((color, colorIndex) => (
                         <div
                           key={colorIndex}
-                          className="w-3 h-3 rounded-full border border-gray-300 shadow-sm"
+                          className="w-2 sm:w-3 h-2 sm:h-3 rounded-full border border-gray-300 shadow-sm"
                           style={{ backgroundColor: color }}
                         />
                       ))}
                     </div>
                   </div>
-                  <h3 className="text-lg font-black text-gray-900 mb-1 tracking-tight group-hover:text-gray-700 transition-colors">
+                  <h3 className="text-xs sm:text-lg font-black text-gray-900 mb-1 tracking-tight group-hover:text-gray-700 transition-colors">
                     {design.title.toUpperCase()}
                   </h3>
                 </div>
@@ -233,32 +248,32 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Modal - Mobile Optimized */}
       {selectedDesign && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white border border-gray-200 rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-3xl font-black text-gray-900 tracking-tight">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50">
+          <div className="bg-white border border-gray-200 rounded-xl sm:rounded-3xl max-w-6xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl">
+            <div className="p-3 sm:p-8">
+              <div className="flex items-center justify-between mb-3 sm:mb-8">
+                <h3 className="text-lg sm:text-3xl font-black text-gray-900 tracking-tight">
                   {selectedDesign.title.toUpperCase()}
                 </h3>
                 <button
                   onClick={() => setSelectedDesign(null)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-xl"
+                  className="text-gray-400 hover:text-gray-600 transition-colors p-1 sm:p-2 hover:bg-gray-100 rounded-xl"
                 >
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-10">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-10">
                 <div>
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl mb-6 flex items-center justify-center border border-gray-200 relative overflow-hidden">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg sm:rounded-2xl mb-3 sm:mb-6 flex items-center justify-center border border-gray-200 relative overflow-hidden">
                     <img 
                       src={selectedDesign.image} 
                       alt={selectedDesign.title}
-                      className="w-full h-full object-cover rounded-2xl"
+                      className="w-full h-full object-cover rounded-lg sm:rounded-2xl"
                       onError={(e) => {
                         // Fallback to placeholder if image doesn't exist
                         const target = e.target as HTMLImageElement;
@@ -267,18 +282,18 @@ export default function Hero() {
                       }}
                     />
                     <div className="absolute inset-0 flex items-center justify-center hidden">
-                      <span className="text-gray-500 text-xl font-bold">DESIGN PREVIEW</span>
+                      <span className="text-gray-500 text-sm sm:text-xl font-bold">DESIGN PREVIEW</span>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-6">
-                    <span className={`text-sm px-4 py-2 rounded-full font-bold tracking-wide border ${getColorClasses(selectedDesign.accentColor)}`}>
+                  <div className="flex items-center space-x-3 sm:space-x-6">
+                    <span className={`text-xs sm:text-sm px-2 sm:px-4 py-1 sm:py-2 rounded-full font-bold tracking-wide border ${getColorClasses(selectedDesign.accentColor)}`}>
                       {selectedDesign.category.toUpperCase()}
                     </span>
-                    <div className="flex space-x-3">
+                    <div className="flex space-x-1 sm:space-x-3">
                       {selectedDesign.colors.map((color, index) => (
                         <div
                           key={index}
-                          className="w-8 h-8 rounded-full border-2 border-gray-300 shadow-sm"
+                          className="w-4 h-4 sm:w-8 sm:h-8 rounded-full border-2 border-gray-300 shadow-sm"
                           style={{ backgroundColor: color }}
                         />
                       ))}
@@ -287,15 +302,15 @@ export default function Hero() {
                 </div>
                 
                 <div>
-                  <h4 className="text-2xl font-black text-gray-900 mb-6 tracking-tight">
+                  <h4 className="text-lg sm:text-2xl font-black text-gray-900 mb-3 sm:mb-6 tracking-tight">
                     AI PROMPT
                   </h4>
-                  <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 mb-8">
-                    <p className="text-gray-700 leading-relaxed text-lg">
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg sm:rounded-2xl p-3 sm:p-6 mb-4 sm:mb-8">
+                    <p className="text-gray-700 leading-relaxed text-xs sm:text-lg">
                       {selectedDesign.prompt}
                     </p>
                   </div>
-                  <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 font-bold text-lg tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105">
+                  <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 sm:py-4 rounded-lg sm:rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 font-bold text-sm sm:text-lg tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105">
                     COPY PROMPT
                   </button>
                 </div>

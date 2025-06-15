@@ -9,13 +9,13 @@ export default function Header() {
           <span className="text-2xl font-black text-gray-900 tracking-tighter">VORTOX</span>
         </div>
         
-        <a 
-          href="https://buy.stripe.com/5kQdR944PahodVLeld8IU0l"
+        <a
+          href="https://buy.stripe.com/8x214n30L2OW9Fveld8IU0m"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 font-bold tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105 text-sm uppercase"
         >
-          GET PROMPTS
+          PREORDER PROMPTS
         </a>
       </div>
     </header>
