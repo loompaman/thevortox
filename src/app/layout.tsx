@@ -13,12 +13,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VORTOX - AI Design Gallery & Prompts",
-  description: "Discover stunning designs and the exact AI prompts used to create them. Get inspired by our curated collection of cutting-edge AI-powered creativity.",
+  title: "VortoxAI - AI-Powered Viral Content Creation Tools",
+  description: "Create viral content with AI. Get proven design prompts, automated TikTok slideshows, and viral video guides that help you create content that actually converts.",
   icons: {
-    icon: '/favicon.svg?v=3',
-    shortcut: '/favicon.svg?v=3',
-    apple: '/favicon.svg?v=3',
+    icon: '/favicon.svg?v=4',
+    shortcut: '/favicon.svg?v=4',
+    apple: '/favicon.svg?v=4',
   },
 };
 
@@ -30,8 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/favicon.svg?v=3" />
+        <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.svg?v=4" />
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}

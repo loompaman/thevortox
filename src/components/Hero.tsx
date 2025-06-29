@@ -7,8 +7,8 @@ interface DesignItem {
   image: string
   prompt: string
   category: string
-  colors: string[]
-  accentColor: string
+  color: string
+  accent: string
 }
 
 const sampleDesigns: DesignItem[] = [
@@ -16,309 +16,280 @@ const sampleDesigns: DesignItem[] = [
     id: 1,
     title: "Fashion Collection",
     image: "/designs/1.png",
-    prompt: "Develop a complete fashion brand identity with lookbooks, hangtags, and seasonal campaigns. Modern typography with editorial photography style.",
+    prompt: "Create a minimalist fashion poster with clean typography and modern aesthetic for a luxury clothing brand",
     category: "Clothing",
-    colors: ["#fdf2f8", "#be185d", "#000000"],
-    accentColor: "pink"
+    color: "from-pink-500 to-rose-500",
+    accent: "pink"
   },
   {
     id: 2,
     title: "Luxury Cosmetics",
     image: "/designs/2.png",
-    prompt: "Develop premium cosmetics branding with sophisticated color schemes, elegant typography, and high-end packaging design. Focus on exclusivity.",
+    prompt: "Design an elegant cosmetics advertisement with premium gold accents and sophisticated color palette",
     category: "Makeup",
-    colors: ["#1f2937", "#d946ef", "#a21caf"],
-    accentColor: "purple"
+    color: "from-purple-500 to-violet-500",
+    accent: "purple"
   },
   {
     id: 3,
     title: "Athletic Brand Identity",
     image: "/designs/3.png",
-    prompt: "Create a dynamic athletic brand with bold logos, energetic color schemes, and performance-focused messaging. Design for sportswear, equipment, and digital presence.",
+    prompt: "Generate a dynamic sports brand visual with bold typography and energetic color scheme",
     category: "Athletics",
-    colors: ["#000000", "#ff6b35", "#ffffff"],
-    accentColor: "red"
+    color: "from-red-500 to-orange-500",
+    accent: "red"
   },
   {
     id: 4,
     title: "Skincare Packaging",
     image: "/designs/4.png",
-    prompt: "Design elegant skincare packaging with clean typography, premium materials, and minimalist aesthetic. Focus on luxury feel and ingredient transparency.",
+    prompt: "Create a clean, natural skincare product design with organic elements and calming colors",
     category: "Skincare",
-    colors: ["#f8f4f0", "#d4af37", "#2d5016"],
-    accentColor: "yellow"
+    color: "from-yellow-500 to-amber-500",
+    accent: "yellow"
   },
   {
     id: 5,
     title: "Product Packaging",
     image: "/designs/5.png",
-    prompt: "Create eye-catching product packaging that stands out on shelves. Include structural design, color psychology, and brand storytelling elements.",
+    prompt: "Design modern product packaging with geometric patterns and contemporary branding elements",
     category: "Packaging",
-    colors: ["#ffffff", "#3b82f6", "#1e40af"],
-    accentColor: "blue"
+    color: "from-blue-500 to-cyan-500",
+    accent: "blue"
   },
   {
     id: 6,
-    title: "Luxury Perfume",
+    title: "Wellness Brand",
     image: "/designs/6.png",
-    prompt: "Design an elegant perfume brand with sophisticated bottle design, premium packaging, and luxurious visual identity. Focus on exclusivity and sensory appeal.",
-    category: "Perfume",
-    colors: ["#f0fdf4", "#16a34a", "#15803d"],
-    accentColor: "green"
+    prompt: "Create a holistic wellness brand visual with natural textures and earth-tone color palette",
+    category: "Wellness",
+    color: "from-green-500 to-emerald-500",
+    accent: "green"
   },
   {
     id: 7,
-    title: "Sneaker Brand",
+    title: "Food & Beverage",
     image: "/designs/7.png",
-    prompt: "Create a dynamic sneaker brand identity with bold graphics, street culture aesthetics, and performance-focused design. Include shoe design and lifestyle branding.",
-    category: "Sneakers",
-    colors: ["#fff7ed", "#ea580c", "#dc2626"],
-    accentColor: "cyan"
+    prompt: "Generate an appetizing food brand design with warm colors and inviting typography",
+    category: "Food & Bev",
+    color: "from-orange-500 to-red-500",
+    accent: "orange"
   }
 ]
 
 export default function Hero() {
   const [selectedDesign, setSelectedDesign] = useState<DesignItem | null>(null)
 
-  const getColorClasses = (color: string) => {
-    const colorMap: { [key: string]: string } = {
-      blue: 'bg-blue-100 text-blue-700 border-blue-200',
-      purple: 'bg-purple-100 text-purple-700 border-purple-200',
-      green: 'bg-green-100 text-green-700 border-green-200',
-      red: 'bg-red-100 text-red-700 border-red-200',
-      pink: 'bg-pink-100 text-pink-700 border-pink-200',
-      cyan: 'bg-cyan-100 text-cyan-700 border-cyan-200',
-      yellow: 'bg-yellow-100 text-yellow-700 border-yellow-200'
-    }
-    return colorMap[color] || 'bg-gray-100 text-gray-700 border-gray-200'
-  }
-
-  // Triple designs for seamless infinite scroll effect
-  const duplicatedDesigns = [...sampleDesigns, ...sampleDesigns, ...sampleDesigns]
-
   return (
-    <section className="w-full px-3 sm:px-6 py-12 sm:py-24 lg:py-32 bg-gradient-to-br from-white via-gray-50 to-gray-100 relative overflow-hidden">
-      {/* CSS Animation Styles */}
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-7 * (280px + 1rem)));
-          }
-        }
-        @keyframes scrollMobile {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-7 * (200px + 0.75rem)));
-          }
-        }
-        .animate-scroll {
-          animation: scroll 28s linear infinite;
-          will-change: transform;
-        }
-        .animate-scroll-mobile {
-          animation: scrollMobile 28s linear infinite;
-          will-change: transform;
-        }
-        
-        /* Ensure smooth performance */
-        .carousel-container {
-          backface-visibility: hidden;
-          perspective: 1000px;
-        }
-        
-        @media (max-width: 640px) {
-          .animate-scroll {
-            animation: scrollMobile 28s linear infinite;
-          }
-        }
-      `}</style>
+    <section className="w-full px-3 sm:px-6 py-12 sm:py-24 lg:py-32 bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden">
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.08),rgba(0,0,0,0))]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(168,85,247,0.08),rgba(0,0,0,0))]"></div>
+      <div className="absolute top-1/4 right-1/4 w-32 sm:w-96 h-32 sm:h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-32 sm:w-96 h-32 sm:h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+      
+      {/* Floating Design Elements */}
+      <div className="absolute top-8 sm:top-20 left-3 sm:left-20 w-4 sm:w-12 h-4 sm:h-12 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-lg transform rotate-12 shadow-xl animate-float opacity-60"></div>
+      <div className="absolute top-1/3 right-3 sm:right-20 w-3 sm:w-8 h-6 sm:h-16 bg-gradient-to-br from-purple-400 to-pink-400 transform rotate-45 shadow-xl animate-float opacity-60" style={{animationDelay: '1s'}}></div>
+      <div className="absolute bottom-1/3 left-1/4 w-5 sm:w-14 h-5 sm:h-14 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full shadow-xl animate-float opacity-60" style={{animationDelay: '2s'}}></div>
 
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,0,0,0.05),rgba(255,255,255,0))]"></div>
-      <div className="absolute top-1/4 right-1/4 w-32 sm:w-96 h-32 sm:h-96 bg-gray-900/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-32 sm:w-96 h-32 sm:h-96 bg-gray-800/5 rounded-full blur-3xl"></div>
-      
-      {/* Floating 3D Elements - Smaller on mobile */}
-      <div className="absolute top-8 sm:top-20 left-3 sm:left-20 w-6 sm:w-16 h-6 sm:h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg sm:rounded-2xl transform rotate-12 shadow-lg animate-bounce" style={{animationDelay: '0s', animationDuration: '3s'}}></div>
-      <div className="absolute top-12 sm:top-32 right-3 sm:right-32 w-4 sm:w-12 h-4 sm:h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1s', animationDuration: '4s'}}></div>
-      <div className="absolute top-1/3 left-1/4 w-3 sm:w-8 h-6 sm:h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 transform rotate-45 shadow-lg animate-bounce" style={{animationDelay: '2s', animationDuration: '3.5s'}}></div>
-      <div className="absolute bottom-1/3 right-1/3 w-6 sm:w-14 h-6 sm:h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-lg sm:rounded-xl transform -rotate-12 shadow-lg animate-bounce" style={{animationDelay: '0.5s', animationDuration: '4.5s'}}></div>
-      <div className="absolute top-1/2 right-3 sm:right-20 w-4 sm:w-10 h-4 sm:h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1.5s', animationDuration: '3s'}}></div>
-      <div className="absolute bottom-8 sm:bottom-20 left-1/3 w-6 sm:w-12 h-3 sm:h-8 bg-gradient-to-br from-pink-400 to-pink-600 rounded-lg transform rotate-30 shadow-lg animate-bounce" style={{animationDelay: '2.5s', animationDuration: '4s'}}></div>
-      <div className="absolute top-16 sm:top-40 left-1/2 w-2 sm:w-6 h-4 sm:h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 transform -rotate-30 shadow-lg animate-bounce" style={{animationDelay: '3s', animationDuration: '3.5s'}}></div>
-      <div className="absolute bottom-16 sm:bottom-40 right-1/4 w-6 sm:w-16 h-2 sm:h-6 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full shadow-lg animate-bounce" style={{animationDelay: '1.2s', animationDuration: '4.2s'}}></div>
-      
-      <div className="max-w-6xl mx-auto text-center relative z-10">
-        <div className="mb-4 sm:mb-8">
-          <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black text-gray-900 mb-1 sm:mb-4 leading-none tracking-tighter">
-            DESIGN
-          </h1>
-          <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black mb-1 sm:mb-4 leading-none tracking-tighter">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              GALLERY
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header Section */}
+        <div className="text-center mb-8 sm:mb-16">
+          <div className="flex items-center justify-center mb-4 sm:mb-6">
+            <span className="text-2xl sm:text-3xl mr-3 animate-pulse">🧠</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-2 sm:mb-4 leading-none tracking-tighter">
+              AI Design
+            </h1>
+          </div>
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-4 sm:mb-6 leading-none tracking-tighter">
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent neon-text">
+              Prompt Packs
             </span>
           </h1>
-          <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black text-gray-900 mb-3 sm:mb-8 leading-none tracking-tighter">
-            & PROMPTS
-          </h1>
-        </div>
-        
-        <p className="text-sm sm:text-xl lg:text-2xl text-gray-600 mb-6 sm:mb-16 max-w-3xl mx-auto leading-relaxed font-medium px-2">
-          Discover <span className="text-blue-600 font-bold">stunning designs</span> and the exact 
-          <span className="text-purple-600 font-bold"> AI prompts</span> used to create them. 
-          Get inspired by our <span className="text-pink-600 font-bold">curated collection</span>.
-        </p>
-        
-        <div className="flex justify-center mb-8 sm:mb-20">
+          
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+            Professional <span className="text-blue-400 font-bold neon-text">AI prompts</span> for 
+            <span className="text-purple-400 font-bold neon-text"> brand visuals</span>, 
+            <span className="text-cyan-400 font-bold neon-text"> product mockups</span>, and 
+            <span className="text-pink-400 font-bold neon-text"> marketing materials</span>.
+          </p>
+          
           <a
             href="https://buy.stripe.com/8x214n30L2OW9Fveld8IU0m"
             target="_blank"
             rel="noopener noreferrer"
-            className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-12 py-3 sm:py-6 rounded-xl sm:rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 font-bold text-sm sm:text-xl tracking-wide shadow-xl hover:shadow-2xl transform hover:scale-105"
+            className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 sm:px-12 py-4 sm:py-6 rounded-xl sm:rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 font-bold text-lg sm:text-xl tracking-wide shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 btn-hover mb-12 sm:mb-16"
           >
-            <span>PREORDER PROMPTS</span>
-            <svg
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              className="w-4 h-4 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={3}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+            <span className="text-xl sm:text-2xl">🚀</span>
+            <span>GET PROMPTS - $25 (50% Off)</span>
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
         </div>
 
-        {/* Moving Design Carousel */}
-        <div className="w-full overflow-hidden carousel-container">
-          <div className="flex gap-3 sm:gap-8 pb-6 sm:pb-8 animate-scroll sm:animate-scroll">
-            {duplicatedDesigns.map((design, index) => (
-              <div
-                key={`${design.id}-${index}`}
-                className="group flex-shrink-0 w-50 sm:w-80 bg-white rounded-xl sm:rounded-3xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-2xl"
-              >
-                <div className="aspect-[3/4] bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
-                  <img 
-                    src={design.image} 
-                    alt={design.title}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback to placeholder if image doesn't exist
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      target.nextElementSibling?.classList.remove('hidden');
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100/50 to-gray-200/50 flex items-center justify-center hidden">
-                    <span className="text-gray-500 text-xs sm:text-lg font-bold tracking-wide">DESIGN PREVIEW</span>
-                  </div>
-                  <div className="absolute inset-0 bg-white/10 group-hover:bg-white/5 transition-all duration-300"></div>
-                </div>
-                <div className="p-2 sm:p-4">
-                  <div className="flex items-center justify-between mb-1 sm:mb-2">
-                    <span className={`text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-bold tracking-wide border ${getColorClasses(design.accentColor)}`}>
-                      {design.category.toUpperCase()}
-                    </span>
-                    <div className="flex space-x-1">
-                      {design.colors.slice(0, 3).map((color, colorIndex) => (
-                        <div
-                          key={colorIndex}
-                          className="w-2 sm:w-3 h-2 sm:h-3 rounded-full border border-gray-300 shadow-sm"
-                          style={{ backgroundColor: color }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <h3 className="text-xs sm:text-lg font-black text-gray-900 mb-1 tracking-tight group-hover:text-gray-700 transition-colors">
-                    {design.title.toUpperCase()}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Modal - Mobile Optimized */}
-      {selectedDesign && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50">
-          <div className="bg-white border border-gray-200 rounded-xl sm:rounded-3xl max-w-6xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl">
-            <div className="p-3 sm:p-8">
-              <div className="flex items-center justify-between mb-3 sm:mb-8">
-                <h3 className="text-lg sm:text-3xl font-black text-gray-900 tracking-tight">
-                  {selectedDesign.title.toUpperCase()}
-                </h3>
-                <button
-                  onClick={() => setSelectedDesign(null)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors p-1 sm:p-2 hover:bg-gray-100 rounded-xl"
+        {/* Design Gallery */}
+        <div className="relative">
+          <div className="overflow-hidden rounded-2xl sm:rounded-3xl glass border border-gray-700 shadow-2xl">
+            <div 
+              className="flex transition-transform duration-[28000ms] ease-linear"
+              style={{
+                transform: 'translateX(0%)',
+                animation: 'infiniteScroll 28s linear infinite'
+              }}
+            >
+              {/* First set of images */}
+              {sampleDesigns.map((design) => (
+                <div
+                  key={design.id}
+                  className="flex-shrink-0 w-64 sm:w-80 lg:w-96 p-3 sm:p-4 cursor-pointer group"
+                  onClick={() => setSelectedDesign(design)}
                 >
-                  <svg className="w-5 h-5 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
+                  <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-gray-800 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-105">
+                    <div className="aspect-[4/5] bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center relative overflow-hidden">
+                      <img 
+                        src={design.image} 
+                        alt={design.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          // Fallback to gradient placeholder if image doesn't exist
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('hidden');
+                        }}
+                      />
+                      {/* Fallback placeholder */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${design.color} opacity-60 flex items-center justify-center hidden`}>
+                        <div className="text-4xl sm:text-6xl lg:text-8xl font-black text-white/40 select-none">
+                          {design.id}
+                        </div>
+                      </div>
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
+                    </div>
+                    
+                    <div className="p-3 sm:p-4 bg-gray-800/90 backdrop-blur-sm">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-${design.accent}-500/20 text-${design.accent}-400 border border-${design.accent}-500/30`}>
+                          {design.category}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-sm sm:text-base text-white mb-1 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+                        {design.title}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              ))}
               
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-10">
-                <div>
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg sm:rounded-2xl mb-3 sm:mb-6 flex items-center justify-center border border-gray-200 relative overflow-hidden">
-                    <img 
-                      src={selectedDesign.image} 
-                      alt={selectedDesign.title}
-                      className="w-full h-full object-cover rounded-lg sm:rounded-2xl"
-                      onError={(e) => {
-                        // Fallback to placeholder if image doesn't exist
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center hidden">
-                      <span className="text-gray-500 text-sm sm:text-xl font-bold">DESIGN PREVIEW</span>
+              {/* Duplicate set for seamless loop */}
+              {sampleDesigns.map((design) => (
+                <div
+                  key={`duplicate-${design.id}`}
+                  className="flex-shrink-0 w-64 sm:w-80 lg:w-96 p-3 sm:p-4 cursor-pointer group"
+                  onClick={() => setSelectedDesign(design)}
+                >
+                  <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-gray-800 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-105">
+                    <div className="aspect-[4/5] bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center relative overflow-hidden">
+                      <img 
+                        src={design.image} 
+                        alt={design.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          // Fallback to gradient placeholder if image doesn't exist
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('hidden');
+                        }}
+                      />
+                      {/* Fallback placeholder */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${design.color} opacity-60 flex items-center justify-center hidden`}>
+                        <div className="text-4xl sm:text-6xl lg:text-8xl font-black text-white/40 select-none">
+                          {design.id}
+                        </div>
+                      </div>
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
                     </div>
-                  </div>
-                  <div className="flex items-center space-x-3 sm:space-x-6">
-                    <span className={`text-xs sm:text-sm px-2 sm:px-4 py-1 sm:py-2 rounded-full font-bold tracking-wide border ${getColorClasses(selectedDesign.accentColor)}`}>
-                      {selectedDesign.category.toUpperCase()}
-                    </span>
-                    <div className="flex space-x-1 sm:space-x-3">
-                      {selectedDesign.colors.map((color, index) => (
-                        <div
-                          key={index}
-                          className="w-4 h-4 sm:w-8 sm:h-8 rounded-full border-2 border-gray-300 shadow-sm"
-                          style={{ backgroundColor: color }}
-                        />
-                      ))}
+                    
+                    <div className="p-3 sm:p-4 bg-gray-800/90 backdrop-blur-sm">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-${design.accent}-500/20 text-${design.accent}-400 border border-${design.accent}-500/30`}>
+                          {design.category}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-sm sm:text-base text-white mb-1 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+                        {design.title}
+                      </h3>
                     </div>
                   </div>
                 </div>
-                
-                <div>
-                  <h4 className="text-lg sm:text-2xl font-black text-gray-900 mb-3 sm:mb-6 tracking-tight">
-                    AI PROMPT
-                  </h4>
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg sm:rounded-2xl p-3 sm:p-6 mb-4 sm:mb-8">
-                    <p className="text-gray-700 leading-relaxed text-xs sm:text-lg">
-                      {selectedDesign.prompt}
-                    </p>
-                  </div>
-                  <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 sm:py-4 rounded-lg sm:rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 font-bold text-sm sm:text-lg tracking-wide shadow-lg hover:shadow-xl transform hover:scale-105">
-                    COPY PROMPT
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-12 sm:mt-16">
+          <p className="text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base">
+            Click any design to see the full prompt →
+          </p>
+          <a
+            href="https://buy.stripe.com/8x214n30L2OW9Fveld8IU0m"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 sm:px-10 py-3 sm:py-5 rounded-xl sm:rounded-2xl hover:from-purple-500 hover:to-pink-500 transition-all duration-300 font-bold text-sm sm:text-lg tracking-wide shadow-2xl hover:shadow-purple-500/25 transform hover:scale-105 btn-hover"
+          >
+            <span className="text-lg sm:text-xl">💎</span>
+            <span>GET ALL PROMPTS - $25 (50% Off)</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Modal */}
+      {selectedDesign && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50" onClick={() => setSelectedDesign(null)}>
+          <div className="glass rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-2xl w-full border border-gray-600 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <h3 className="text-xl sm:text-2xl font-black text-white">{selectedDesign.title}</h3>
+              <button 
+                onClick={() => setSelectedDesign(null)}
+                className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700 rounded-lg"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="mb-4 sm:mb-6">
+              <span className={`px-3 py-1 rounded-full text-sm font-bold bg-${selectedDesign.accent}-500/20 text-${selectedDesign.accent}-400 border border-${selectedDesign.accent}-500/30`}>
+                {selectedDesign.category}
+              </span>
+            </div>
+            
+            <div className="bg-gray-800/50 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-700">
+              <h4 className="text-sm font-bold text-gray-300 mb-2 uppercase tracking-wide">AI PROMPT:</h4>
+              <p className="text-gray-200 leading-relaxed text-sm sm:text-base">{selectedDesign.prompt}</p>
+            </div>
+            
+            <a
+              href="https://buy.stripe.com/8x214n30L2OW9Fveld8IU0m"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 font-bold text-center block tracking-wide shadow-xl hover:shadow-2xl transform hover:scale-105 btn-hover"
+            >
+              GET ALL PROMPTS - $25 (50% Off)
+            </a>
+          </div>
+        </div>
       )}
+
+      <style jsx>{`
+        @keyframes infiniteScroll {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   )
 } 
